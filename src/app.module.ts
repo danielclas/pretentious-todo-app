@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { configValidationSchema } from './config.validation.schema';
 import { HealthModule } from './health/health.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -35,5 +36,6 @@ import { HealthModule } from './health/health.module';
   ],
   providers: [AppService],
   exports: [AppService],
+  controllers: [AppController],
 })
 export class AppModule {}

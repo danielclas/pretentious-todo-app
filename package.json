@@ -19,7 +19,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "docker": "docker run -d --env-file .env -e DB_HOST=docker.for.mac.host.internal app"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
@@ -30,7 +31,7 @@
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/terminus": "^8.0.0",
-    "@nestjs/typeorm": "^8.0.1",
+    "@nestjs/typeorm": "8.0.1",
     "@types/hapi__joi": "^17.1.8",
     "@types/passport-jwt": "^3.0.6",
     "bcrypt": "^5.0.1",
@@ -42,7 +43,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "typeorm": "^0.2.45"
+    "typeorm": "0.2.45"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
