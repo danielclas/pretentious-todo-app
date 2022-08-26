@@ -8,8 +8,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - 'docker build -t app .'
-      - 'docker tag app $AWS_ECR_REPO'
+      - docker build -t app .
+      - docker tag app $AWS_ECR_REPO
   post_build:
     commands:
       - echo Build completed on `date`
