@@ -8,7 +8,6 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - printf '[{"name":"app","imageUri":"%s"}]' $AWS_ECR_REPO > imagedefinitions.json
       - docker build -t app .
       - docker tag app $AWS_ECR_REPO
   post_build:
@@ -16,7 +15,6 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $AWS_ECR_REPO
-
+      - printf '[{"name":"app","imageUri":"%s"}]' $AWS_ECR_REPO > imagedefinitions.json
 artifacts:
-  files:
-    - imagedefinitions.json
+  files: imagedefinitions.json
