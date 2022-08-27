@@ -1,4 +1,13 @@
-import { IsString } from 'class-validator';
+import {
+  isInt,
+  IsInt,
+  IsNumber,
+  IsNumberString,
+  IsOptional,
+  IsString,
+  Max,
+  Min,
+} from 'class-validator';
 
 export class CreateTaskDTO {
   @IsString()
@@ -6,4 +15,10 @@ export class CreateTaskDTO {
 
   @IsString()
   description: string;
+
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(36)
+  pointsEstimate?: number;
 }

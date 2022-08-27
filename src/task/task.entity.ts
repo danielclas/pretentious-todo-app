@@ -22,6 +22,9 @@ export class Task {
   @Column()
   status: TaskStatus;
 
+  @Column({ nullable: true })
+  pointsEstimate?: number;
+
   @ManyToOne((_) => User, (user) => user.tasks, { eager: true })
   @Exclude()
   user: User;

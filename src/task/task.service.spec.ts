@@ -1,9 +1,6 @@
 // Service
 
-import {
-  InternalServerErrorException,
-  NotFoundException,
-} from '@nestjs/common';
+import { HttpException, InternalServerErrorException } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 import { Test } from '@nestjs/testing';
 import { AuthModule } from '../auth/auth.module';
@@ -77,7 +74,7 @@ describe('Task service', () => {
       jest.spyOn(taskRepository, 'findOne').mockResolvedValue(null);
 
       expect(taskService.getTaskById(1, mockUser)).rejects.toThrow(
-        NotFoundException,
+        HttpException,
       );
     });
   });

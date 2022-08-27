@@ -1,7 +1,8 @@
 import {
+  HttpException,
+  HttpStatus,
   Injectable,
   InternalServerErrorException,
-  NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/auth/user.entity';
@@ -24,7 +25,10 @@ export class TaskService {
     const task = await this.taskRepository.findOne({ id, user });
 
     if (!task) {
-      throw new NotFoundException();
+      throw new HttpException(
+        `Task with id ${id} not found`,
+        HttpStatus.NOT_FOUND,
+      );
     }
 
     return task;
